@@ -59,7 +59,8 @@ namespace UnitTestPlugin.Model.Handlers.trace.flexunit {
             info.name = match.Groups[ 1 ].Value;
             info.result = TestResultFromString( match.Groups[ 2 ].Value );
 
-            ui.AddTest( info );
+            if( info.result == TestResult.PASSED )
+                ui.AddTest( info );
         }
 
         private void ProcessTestError( string message ) {
